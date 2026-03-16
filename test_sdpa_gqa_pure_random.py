@@ -15,7 +15,7 @@ This test uses ONLY random tensors — no model weights needed.
 Workarounds:
   1. v = v.contiguous() before SDPA
   2. --attn_implementation eager
-  3. Upgrade to ROCm 7.2+
+  3. Upgrade pytorch
 """
 import sys
 import torch
@@ -163,8 +163,8 @@ def main():
         print()
         print("  Workarounds:")
         print("    1. v = v.contiguous() before calling SDPA")
-        print("    2. Use eager attention: --attn_implementation eager")
-        print("    3. Upgrade to ROCm 7.2+")
+        print("    2. Use eager/flash_attn attention: --attn_implementation eager/flash_attention_2")
+        print("    3. Upgrade PyTorch")
     else:
         print("  All tests passed. No bug on this platform.")
     return 1 if any_bug else 0
